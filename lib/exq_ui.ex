@@ -3,7 +3,11 @@ defmodule ExqUi do
   import Supervisor.Spec, warn: false
 
   def start(_type, _args) do
-    launch_app()
+    if Application.get_env(:exq_ui, :start_on_application) do
+      launch_app()
+    else
+      Supervisor.start_link([], strategy: :one_for_one)
+    end
   end
 
   def launch_app do

@@ -14,4 +14,5 @@ config :exq,
   redis_timeout: 5000,
   genserver_timeout: 5000,
   test_with_local_redis: true,
+  queue_adapter: Exq.Adapters.Queue.Mock,
   max_retries: 0
